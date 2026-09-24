@@ -682,121 +682,6 @@ function Agenda() {
   )
 }
 
-/* ---------------------------------------------------------------- */
-/* Section 3 — Categorías — Deep Purple                              */
-/* ---------------------------------------------------------------- */
-
-const CATEGORIES = [
-  {
-    tag: "CODE",
-    title: "Programación & Mecánicas",
-    bullets: [
-      "Prototipado en Unity / Godot",
-      "Gameplay y sistemas",
-      "Optimización y build final",
-    ],
-    icon: (
-      <>
-        <rect x="6" y="14" width="10" height="10" />
-        <rect x="16" y="14" width="10" height="10" />
-        <rect x="26" y="14" width="10" height="10" />
-        <rect x="16" y="24" width="10" height="10" />
-        <rect x="16" y="4" width="10" height="10" />
-      </>
-    ),
-  },
-  {
-    tag: "ART",
-    title: "Arte & Narrativa",
-    bullets: [
-      "Pixel art y sprites",
-      "Modelado low-poly",
-      "Worldbuilding e historia",
-    ],
-    icon: (
-      <>
-        <rect x="6" y="6" width="8" height="8" />
-        <rect x="14" y="14" width="8" height="8" />
-        <rect x="22" y="6" width="8" height="8" />
-        <rect x="6" y="22" width="8" height="8" />
-        <rect x="26" y="22" width="8" height="8" />
-      </>
-    ),
-  },
-  {
-    tag: "AUDIO",
-    title: "Diseño Sonoro & Música",
-    bullets: [
-      "Bandas sonoras chiptune",
-      "Efectos de sonido",
-      "Ambientes inmersivos",
-    ],
-    icon: (
-      <>
-        <rect x="6" y="18" width="6" height="6" />
-        <rect x="14" y="10" width="6" height="22" />
-        <rect x="22" y="4" width="6" height="34" />
-        <rect x="30" y="14" width="6" height="14" />
-      </>
-    ),
-  },
-]
-
-function Categories() {
-  return (
-    <section id="categorias" className="bg-grape text-white">
-      <div className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mb-14 flex flex-col items-start gap-4">
-          <PixelBadge>CATEGORÍAS</PixelBadge>
-          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
-            Categorías y Desafíos
-          </h2>
-          <p className="max-w-xl text-lavender">
-            Arma tu equipo y compite en los tres frentes que definen un gran
-            videojuego.
-          </p>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-3">
-          {CATEGORIES.map((c) => (
-            <article
-              key={c.title}
-              className="group rounded-2xl border border-mint/40 bg-void p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_45px_-12px_rgba(34,225,157,0.8)]"
-            >
-              <div className="mb-6 inline-flex rounded-xl border border-mint/30 bg-grape/30 p-3">
-                <svg
-                  viewBox="0 0 42 42"
-                  className="h-10 w-10"
-                  fill="#22E19D"
-                  aria-hidden
-                >
-                  {c.icon}
-                </svg>
-              </div>
-              <div className="mb-3">
-                <PixelBadge>{c.tag}</PixelBadge>
-              </div>
-              <h3 className="font-display text-2xl font-bold text-white">
-                {c.title}
-              </h3>
-              <ul className="mt-4 space-y-2">
-                {c.bullets.map((b) => (
-                  <li
-                    key={b}
-                    className="flex items-center gap-2 text-sm text-lavender"
-                  >
-                    <span className="h-1.5 w-1.5 flex-none bg-mint" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 /* ---------------------------------------------------------------- */
 /* Section — Road to Caribe Game Jam · CrackVibes & Mentores — White */
@@ -907,20 +792,17 @@ function CrackVibes() {
 type Logo = { name: string src?: string dark?: boolean }
 
 const SPONSORS: Logo[] = [
-  { name: "Universidad de la Costa", src: "/assets/cuc-white.png", dark: true },
-  { name: "EquinoxioLab", src: "/assets/equinoxiolab.webp", dark: true },
   { name: "IDITEK", src: "/assets/iditek-new.png", dark: true },
-  { name: "OP", src: "/assets/op.png", dark: true },
+  { name: "CUC", src: "/assets/cuc-white.png", dark: true },
   { name: "Mito", src: "/assets/mito.png", dark: true },
+  { name: "EquinoxioLab", src: "/assets/equinoxiolab.webp", dark: true },
+  { name: "One Pc", src: "/assets/op.png", dark: true },
 ]
 
 const ALLIES: Logo[] = [
   { name: "IGDA Colombia", src: "/assets/igda.png", dark: true },
   { name: "Frecuencia Gamer", src: "/assets/frecuencia-gamer.png", dark: true },
   { name: "First Flame", src: "/assets/first-flame.png", dark: true },
-]
-
-const DIFFUSION: Logo[] = [
   { name: "Maleiwa Studio", src: "/assets/maleiwa.png", dark: true },
   {
     name: "Aventuras Bonitas",
@@ -928,6 +810,8 @@ const DIFFUSION: Logo[] = [
     dark: true,
   },
   { name: "Rival Arts", src: "/assets/rival-arts.png", dark: true },
+  { name: "FOMO", dark: true },
+  { name: "CaribeDev", dark: true },
 ]
 
 function LogoCard({
@@ -942,9 +826,26 @@ function LogoCard({
   if (!logo.src) {
     return (
       <div
-        className={`flex ${height} items-center justify-center rounded-2xl border border-dashed border-void/15 bg-white px-4 text-center text-sm font-semibold text-void/25`}
+        className={`flex ${height} items-center justify-center rounded-2xl border p-6 shadow-sm transition-all hover:shadow-md ${
+          logo.dark
+            ? "border-void bg-void hover:border-mint/50"
+            : "border-void/10 bg-white hover:border-grape/40"
+        }`}
       >
-        {logo.name}
+        <span className="font-display font-bold tracking-wider text-white">
+          {logo.name === "FOMO" ? (
+            <span className="flex items-center gap-1.5 font-display text-xl font-black text-mint">
+              <span className="font-pixel text-[11px] text-mint">▶</span>
+              <span>FOMO</span>
+            </span>
+          ) : logo.name === "CaribeDev" ? (
+            <span className="font-display text-lg font-bold text-white">
+              Caribe<span className="font-black text-mint">Dev</span>
+            </span>
+          ) : (
+            <span className="text-sm font-semibold text-lavender">{logo.name}</span>
+          )}
+        </span>
       </div>
     )
   }
@@ -981,7 +882,7 @@ function Partners() {
         {/* Organizador principal */}
         <div className="mx-auto mb-14 flex max-w-md flex-col items-center gap-4">
           <span className="text-xs font-semibold uppercase tracking-widest text-grape">
-            Organizador principal
+            Organiza:
           </span>
           <div className="flex h-28 w-full items-center justify-center rounded-2xl border border-void bg-void px-10 shadow-sm">
             <img
@@ -1009,35 +910,18 @@ function Partners() {
           </div>
         </div>
 
-        {/* Nivel 2 — Aliados */}
-        <div className="mb-12">
+        {/* Aliados */}
+        <div>
           <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">
             ALIADOS
           </p>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {ALLIES.map((a) => (
               <LogoCard
                 key={a.name}
                 logo={a}
                 height="h-24"
                 imgMax="max-h-12 max-w-[70%]"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Nivel 3 — Aliados de difusión */}
-        <div>
-          <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">
-            ALIADOS DE DIFUSIÓN
-          </p>
-          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
-            {DIFFUSION.map((d) => (
-              <LogoCard
-                key={d.name}
-                logo={d}
-                height="h-20"
-                imgMax="max-h-10 max-w-[70%]"
               />
             ))}
           </div>
@@ -1168,82 +1052,35 @@ function Faq() {
 /* Section — Institucional CracktiveLab                              */
 /* ---------------------------------------------------------------- */
 
-const CRACK_PILLARS = [
-  {
-    title: "Emprendimiento",
-    desc: "Crecimiento de nuevos estudios y proyectos digitales.",
-    icon: (
-      <>
-        <rect x="16" y="4" width="10" height="10" />
-        <rect x="16" y="16" width="10" height="10" />
-        <rect x="16" y="28" width="10" height="10" />
-      </>
-    ),
-  },
-  {
-    title: "Aprendizaje",
-    desc: "Fortalecimiento de capacidades técnicas y creativas.",
-    icon: (
-      <>
-        <rect x="6" y="14" width="10" height="10" />
-        <rect x="16" y="14" width="10" height="10" />
-        <rect x="26" y="14" width="10" height="10" />
-      </>
-    ),
-  },
-  {
-    title: "Comunidad",
-    desc: "Espacios de encuentro, colaboración y visibilidad.",
-    icon: (
-      <>
-        <rect x="6" y="8" width="10" height="10" />
-        <rect x="26" y="8" width="10" height="10" />
-        <rect x="16" y="24" width="10" height="10" />
-      </>
-    ),
-  },
-]
-
 function Institutional() {
   return (
     <section className="bg-void">
       <div className="mx-auto max-w-7xl px-6 pb-4 pt-8">
-        <div className="overflow-hidden rounded-3xl border border-mint/20 bg-gradient-to-br from-grape/70 via-grape/30 to-void p-8 sm:p-12">
-          <div className="max-w-2xl">
-            <PixelBadge>CRACKTIVELAB</PixelBadge>
-            <h2 className="mt-5 font-display text-3xl font-bold text-white sm:text-4xl">
-              Epicentro de industrias digitales
-            </h2>
-            <p className="mt-4 leading-relaxed text-lavender">
-              Entidad sin ánimo de lucro que dinamiza la industria de
-              videojuegos y contenidos digitales en el Caribe colombiano.
-            </p>
-          </div>
+        <div className="relative overflow-hidden rounded-3xl border border-mint/20 bg-gradient-to-br from-grape/70 via-grape/30 to-void p-8 sm:p-12">
+          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+            <div className="max-w-2xl">
+              <PixelBadge>CRACKTIVELAB</PixelBadge>
+              <h2 className="mt-5 font-display text-3xl font-bold text-white sm:text-4xl">
+                Epicentro de industrias digitales
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-lavender sm:text-lg">
+                Entidad sin ánimo de lucro que dinamiza la industria de
+                videojuegos y contenidos digitales en el Caribe colombiano,
+                impulsando el talento creativo, la formación y el desarrollo de
+                nuevas oportunidades para nuestra comunidad.
+              </p>
+            </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
-            {CRACK_PILLARS.map((p) => (
-              <div
-                key={p.title}
-                className="rounded-2xl border border-white/10 bg-void/40 p-6 backdrop-blur"
+            <div className="flex-none">
+              <PrimaryButton
+                href="https://cracktivelab.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl px-8 py-4"
               >
-                <div className="mb-4 inline-flex rounded-xl border border-mint/30 bg-grape/30 p-3">
-                  <svg
-                    viewBox="0 0 42 42"
-                    className="h-8 w-8"
-                    fill="#22E19D"
-                    aria-hidden
-                  >
-                    {p.icon}
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-bold text-white">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-lavender">
-                  {p.desc}
-                </p>
-              </div>
-            ))}
+                Sobre CracktiveLab
+              </PrimaryButton>
+            </div>
           </div>
         </div>
       </div>
@@ -1397,7 +1234,6 @@ export default function App() {
         <Inscription />
         <GameJamPlus />
         <Agenda />
-        <Categories />
         <CrackVibes />
         <Partners />
         <Faq />
