@@ -1,27 +1,11 @@
-import { useEffect, useState } from 'react'
-import logoLight from './assets/cracktivelab-logo-light.png'
-import logoBlancoVerde from './assets/cracktivelab-blanco-verde.png'
-import crackvibesBg from './assets/crackvibes_bg.jpg'
-import gamejamplusBg from './assets/crackvibes_bg2.jpg'
-import logoCuc from './assets/cuc-white.png'
-import logoEquinoxio from './assets/equinoxiolab.webp'
-import logoIditek from './assets/iditek-new.png'
-import logoIgda from './assets/igda.png'
-import logoAventuras from './assets/aventuras-bonitas.png'
-import logoCracktiveVariant from './assets/cracktivelab-variant.png'
-import logoFirstFlame from './assets/first-flame.png'
-import logoFrecuencia from './assets/frecuencia-gamer.png'
-import logoMaleiwa from './assets/maleiwa.png'
-import logoMito from './assets/mito.png'
-import logoOp from './assets/op.png'
-import logoRival from './assets/rival-arts.png'
+import { useEffect, useState } from "react"
 
 /* ---------------------------------------------------------------- */
 /* Countdown                                                         */
 /* ---------------------------------------------------------------- */
 
-const REGISTRATION_URL = 'https://holafomo.com/es/event/MTIxNg=='
-const TARGET = new Date('2026-10-16T09:00:00-05:00').getTime()
+const REGISTRATION_URL = "https://holafomo.com/es/event/MTIxNg=="
+const TARGET = new Date("2026-10-16T09:00:00-05:00").getTime()
 
 function useCountdown() {
   const [now, setNow] = useState(() => Date.now())
@@ -40,23 +24,30 @@ function useCountdown() {
 function CountdownCard() {
   const { days, hours, minutes } = useCountdown()
   const units = [
-    { label: 'DÍAS', value: days },
-    { label: 'HORAS', value: hours },
-    { label: 'MIN', value: minutes },
+    { label: "DÍAS", value: days },
+    { label: "HORAS", value: hours },
+    { label: "MIN", value: minutes },
   ]
   return (
     <div className="relative rounded-2xl border-2 border-mint bg-void/90 p-6 backdrop-blur-md shadow-[0_0_45px_-8px_rgba(34,225,157,0.65)]">
       <div className="mb-4 flex items-center gap-2">
         <span className="h-2 w-2 animate-pulse rounded-full bg-mint" />
-        <span className="font-pixel text-[9px] tracking-wider text-mint">CUENTA REGRESIVA</span>
+        <span className="font-pixel text-[9px] tracking-wider text-mint">
+          CUENTA REGRESIVA
+        </span>
       </div>
       <div className="flex gap-3">
         {units.map((u) => (
-          <div key={u.label} className="flex-1 rounded-xl border border-white/10 bg-grape/30 px-2 py-4 text-center">
+          <div
+            key={u.label}
+            className="flex-1 rounded-xl border border-white/10 bg-grape/30 px-2 py-4 text-center"
+          >
             <div className="font-display text-4xl font-bold tabular-nums text-white sm:text-5xl">
-              {String(u.value).padStart(2, '0')}
+              {String(u.value).padStart(2, "0")}
             </div>
-            <div className="mt-2 font-pixel text-[8px] tracking-widest text-lavender">{u.label}</div>
+            <div className="mt-2 font-pixel text-[8px] tracking-widest text-lavender">
+              {u.label}
+            </div>
           </div>
         ))}
       </div>
@@ -68,8 +59,14 @@ function CountdownCard() {
 /* Building blocks                                                   */
 /* ---------------------------------------------------------------- */
 
-function PixelBadge({ children, tone = 'mint' }: { children: React.ReactNode; tone?: 'mint' | 'purple' }) {
-  const cls = tone === 'mint' ? 'bg-mint text-void' : 'bg-grape text-white'
+function PixelBadge({
+  children,
+  tone = "mint",
+}: {
+  children: React.ReactNode
+  tone?: "mint" | "purple"
+}) {
+  const cls = tone === "mint" ? "bg-mint text-void" : "bg-grape text-white"
   return (
     <span
       className={`inline-block px-2 py-1 font-pixel text-[8px] leading-none tracking-wider ${cls} [clip-path:polygon(0_4px,4px_4px,4px_0,calc(100%-4px)_0,calc(100%-4px)_4px,100%_4px,100%_calc(100%-4px),calc(100%-4px)_calc(100%-4px),calc(100%-4px)_100%,4px_100%,4px_calc(100%-4px),0_calc(100%-4px))]`}
@@ -81,7 +78,7 @@ function PixelBadge({ children, tone = 'mint' }: { children: React.ReactNode; to
 
 function PrimaryButton({
   children,
-  className = '',
+  className = "",
   href = REGISTRATION_URL,
   target,
   rel,
@@ -92,16 +89,18 @@ function PrimaryButton({
   target?: string
   rel?: string
 }) {
-  const isExternal = href.startsWith('http')
+  const isExternal = href.startsWith("http")
   return (
     <a
       href={href}
-      target={target ?? (isExternal ? '_blank' : undefined)}
-      rel={rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
+      target={target ?? (isExternal ? "_blank" : undefined)}
+      rel={rel ?? (isExternal ? "noopener noreferrer" : undefined)}
       className={`group inline-flex items-center justify-center gap-2 rounded-xl bg-mint px-7 py-3.5 font-display text-base font-bold text-void transition-all duration-200 hover:shadow-[0_0_35px_-4px_rgba(34,225,157,0.85)] hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint ${className}`}
     >
       {children}
-      <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+      <span className="transition-transform duration-200 group-hover:translate-x-1">
+        →
+      </span>
     </a>
   )
 }
@@ -109,8 +108,8 @@ function PrimaryButton({
 function FloatingSticker({
   src,
   alt,
-  className = '',
-  rotate = '-6deg',
+  className = "",
+  rotate = "-6deg",
   slow = false,
   label,
 }: {
@@ -123,11 +122,18 @@ function FloatingSticker({
 }) {
   return (
     <figure
-      className={`absolute ${slow ? 'animate-float-slower' : 'animate-float-slow'} ${className}`}
+      className={`absolute ${
+        slow ? "animate-float-slower" : "animate-float-slow"
+      } ${className}`}
       style={{ transform: `rotate(${rotate})` }}
     >
       <div className="overflow-hidden rounded-xl border-4 border-white bg-grape shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)]">
-        <img src={src} alt={alt} className="h-full w-full object-cover" loading="lazy" />
+        <img
+          src={src}
+          alt={alt}
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
       </div>
       {label && (
         <figcaption className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap">
@@ -143,12 +149,12 @@ function FloatingSticker({
 /* ---------------------------------------------------------------- */
 
 const NAV_LINKS = [
-  { label: 'Inicio', href: '#top' },
-  { label: '¿Qué es?', href: '#sobre' },
-  { label: 'Beneficios', href: '#beneficios' },
-  { label: 'Agenda', href: '#agenda' },
-  { label: 'GameJamPlus', href: '#gamejamplus' },
-  { label: 'Preguntas', href: '#preguntas' },
+  { label: "Inicio", href: "#top" },
+  { label: "¿Qué es?", href: "#sobre" },
+  { label: "Beneficios", href: "#beneficios" },
+  { label: "Agenda", href: "#agenda" },
+  { label: "GameJamPlus", href: "#gamejamplus" },
+  { label: "Preguntas", href: "#preguntas" },
 ]
 
 function Nav() {
@@ -156,12 +162,19 @@ function Nav() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-void/85 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <a href="#top" className="flex items-center">
-          <img src={logoLight} alt="CracktiveLab" className="h-9 w-auto" />
+          <img
+            src="/assets/cracktivelab-logo-light.png"
+            alt="CracktiveLab"
+            className="h-9 w-auto"
+          />
         </a>
         <ul className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="font-display text-sm font-medium text-lavender transition-colors hover:text-white">
+              <a
+                href={l.href}
+                className="font-display text-sm font-medium text-lavender transition-colors hover:text-white"
+              >
                 {l.label}
               </a>
             </li>
@@ -190,8 +203,8 @@ function Hero() {
           className="absolute inset-0 opacity-[0.12] animate-[grid-pan_6s_linear_infinite]"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(209,179,224,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(209,179,224,0.5) 1px,transparent 1px)',
-            backgroundSize: '40px 40px',
+              "linear-gradient(rgba(209,179,224,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(209,179,224,0.5) 1px,transparent 1px)",
+            backgroundSize: "40px 40px",
           }}
         />
       </div>
@@ -201,28 +214,38 @@ function Hero() {
           <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-mint/40 bg-grape/30 px-4 py-1.5 backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_10px_2px_rgba(34,225,157,0.9)]" />
             <span className="text-xs font-medium text-lavender sm:text-sm">
-              16, 17 y 18 DE OCTUBRE 2026 · UNIVERSIDAD DE LA COSTA · BARRANQUILLA
+              16, 17 y 18 DE OCTUBRE 2026 · UNIVERSIDAD DE LA COSTA ·
+              BARRANQUILLA
             </span>
           </div>
 
           <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
             CARIBE
             <br />
-            <span className="text-mint [text-shadow:0_0_25px_rgba(34,225,157,0.5)]">GAME JAM</span>
+            <span className="text-mint [text-shadow:0_0_25px_rgba(34,225,157,0.5)]">
+              GAME JAM
+            </span>
             <br />
             2026
           </h1>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-lavender sm:text-lg">
-            48 horas para crear, aprender y llevar una idea a videojuego. Tres días para crear en equipo,
-            aprender haciendo, conectarte con otros talentos y convertir una idea en un videojuego jugable.
+            48 horas para crear, aprender y llevar una idea a videojuego. Tres
+            días para crear en equipo, aprender haciendo, conectarte con otros
+            talentos y convertir una idea en un videojuego jugable.
           </p>
 
           <div className="mt-7 inline-flex items-center gap-2 rounded-xl border border-mint/40 bg-mint/10 px-4 py-2">
-            <span className="font-pixel text-[9px] tracking-wider text-mint">INSCRIPCIÓN</span>
-            <span className="font-display text-sm font-bold text-white">$35.000 COP</span>
+            <span className="font-pixel text-[9px] tracking-wider text-mint">
+              INSCRIPCIÓN
+            </span>
+            <span className="font-display text-sm font-bold text-white">
+              $35.000 COP
+            </span>
             <span className="text-mint">·</span>
-            <span className="text-xs font-medium text-lavender">Cupos Limitados</span>
+            <span className="text-xs font-medium text-lavender">
+              Cupos Limitados
+            </span>
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -241,7 +264,9 @@ function Hero() {
               ¿Qué es?
             </a>
           </div>
-          <p className="mt-4 text-xs text-lavender/70">Asegura tu cupo en HolaFOMO.</p>
+          <p className="mt-4 text-xs text-lavender/70">
+            Asegura tu cupo en HolaFOMO.
+          </p>
         </div>
 
         {/* Visual: photo collage + floating stickers + countdown */}
@@ -287,20 +312,20 @@ function Hero() {
 
 const METRICS = [
   {
-    stat: '3 Días',
-    desc: 'Una experiencia intensiva para llevar una idea desde el concepto hasta un prototipo jugable.',
+    stat: "3 Días",
+    desc: "Una experiencia intensiva para llevar una idea desde el concepto hasta un prototipo jugable.",
   },
   {
-    stat: '48 Horas de Creación',
-    desc: 'Trabajo colaborativo: desarrollo, diseño, arte, narrativa y pruebas.',
+    stat: "48 Horas de Creación",
+    desc: "Trabajo colaborativo: desarrollo, diseño, arte, narrativa y pruebas.",
   },
   {
-    stat: 'Mentorías',
-    desc: 'Acompañamiento de profesionales y actores de la industria durante todo el proceso.',
+    stat: "Mentorías",
+    desc: "Acompañamiento de profesionales y actores de la industria durante todo el proceso.",
   },
   {
-    stat: 'Premios',
-    desc: 'Reconocimientos y oportunidades para los proyectos destacados.',
+    stat: "Premios",
+    desc: "Reconocimientos y oportunidades para los proyectos destacados.",
   },
 ]
 
@@ -313,8 +338,12 @@ function MetricsRibbon() {
             key={m.stat}
             className="rounded-2xl border border-white/10 bg-grape/15 p-6 transition-colors hover:border-mint/50"
           >
-            <div className="font-display text-2xl font-bold text-mint">{m.stat}</div>
-            <p className="mt-2 text-sm leading-relaxed text-lavender">{m.desc}</p>
+            <div className="font-display text-2xl font-bold text-mint">
+              {m.stat}
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-lavender">
+              {m.desc}
+            </p>
           </div>
         ))}
       </div>
@@ -327,15 +356,15 @@ function MetricsRibbon() {
 /* ---------------------------------------------------------------- */
 
 const INFO_CARDS = [
-  { q: '¿Cuándo?', a: '16 al 18 de octubre de 2026.' },
-  { q: '¿Dónde?', a: 'Universidad de la Costa – Barranquilla.' },
+  { q: "¿Cuándo?", a: "16 al 18 de octubre de 2026." },
+  { q: "¿Dónde?", a: "Universidad de la Costa – Barranquilla." },
   {
-    q: '¿A quién está dirigida?',
-    a: 'Desarrolladores, artistas 2D/3D, diseñadores, músicos, escritores, estudiantes y entusiastas.',
+    q: "¿A quién está dirigida?",
+    a: "Desarrolladores, artistas 2D/3D, diseñadores, músicos, escritores, estudiantes y entusiastas.",
   },
   {
-    q: '¿Cuál es el reto?',
-    a: 'Construir en equipo un videojuego funcional durante la Jam con creatividad y trabajo colaborativo.',
+    q: "¿Cuál es el reto?",
+    a: "Construir en equipo un videojuego funcional durante la Jam con creatividad y trabajo colaborativo.",
   },
 ]
 
@@ -351,12 +380,13 @@ function WhatIs() {
             ¿Qué es la <span className="text-grape">Caribe Game Jam</span>?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-void/70">
-            Una experiencia intensiva que reúne a desarrolladores, artistas, diseñadores, músicos y creadores para
-            construir videojuegos en equipo. La temática es secreta y se revela al inicio del evento.
+            Una experiencia intensiva que reúne a desarrolladores, artistas,
+            diseñadores, músicos y creadores para construir videojuegos en
+            equipo. La temática es secreta y se revela al inicio del evento.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-void/70">
-            No necesitas tener un equipo previo ni ser experto: aquí aprendes haciendo, con el acompañamiento de
-            mentores de la industria.
+            No necesitas tener un equipo previo ni ser experto: aquí aprendes
+            haciendo, con el acompañamiento de mentores de la industria.
           </p>
         </div>
 
@@ -366,7 +396,9 @@ function WhatIs() {
               key={c.q}
               className="rounded-2xl border border-void/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-grape/40 hover:shadow-[0_20px_50px_-24px_rgba(89,12,139,0.5)]"
             >
-              <h3 className="font-display text-lg font-bold text-grape">{c.q}</h3>
+              <h3 className="font-display text-lg font-bold text-grape">
+                {c.q}
+              </h3>
               <p className="mt-2 leading-relaxed text-void/60">{c.a}</p>
             </article>
           ))}
@@ -381,25 +413,32 @@ function WhatIs() {
 /* ---------------------------------------------------------------- */
 
 const MEALS = [
-  { day: 'Viernes', items: 'Cena' },
-  { day: 'Sábado', items: 'Desayuno · Almuerzo · Cena' },
-  { day: 'Domingo', items: 'Desayuno · Almuerzo' },
+  { day: "Viernes", items: "Cena" },
+  { day: "Sábado", items: "Desayuno · Almuerzo · Cena" },
+  { day: "Domingo", items: "Desayuno · Almuerzo" },
 ]
 
 const BENEFITS = [
-  'Camiseta oficial de la Caribe Game Jam 2026.',
-  'Identificación oficial del evento.',
-  'Acceso a mentorías y acompañamiento continuo.',
-  'Actividades exclusivas de networking.',
-  'Participación en premios e incentivos.',
-  'Showcase final de videojuegos.',
-  'Conexión con la comunidad de desarrollo del Caribe.',
-  'Ruta de crecimiento a través de GameJamPlus.',
+  "Camiseta oficial de la Caribe Game Jam 2026.",
+  "Identificación oficial del evento.",
+  "Acceso a mentorías y acompañamiento continuo.",
+  "Actividades exclusivas de networking.",
+  "Participación en premios e incentivos.",
+  "Showcase final de videojuegos.",
+  "Conexión con la comunidad de desarrollo del Caribe.",
+  "Ruta de crecimiento a través de GameJamPlus.",
 ]
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 flex-none" fill="none" stroke="#22E19D" strokeWidth="3" aria-hidden>
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5 flex-none"
+      fill="none"
+      stroke="#22E19D"
+      strokeWidth="3"
+      aria-hidden
+    >
       <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
@@ -414,8 +453,8 @@ function Inscription() {
             <PixelBadge tone="purple">TU INSCRIPCIÓN</PixelBadge>
           </div>
           <h2 className="font-display text-3xl font-bold text-void sm:text-4xl">
-            Por solo <span className="text-grape">$35.000</span> tendrás acceso a toda la experiencia Caribe Game
-            Jam 2026
+            Por solo <span className="text-grape">$35.000</span> tendrás acceso
+            a toda la experiencia Caribe Game Jam 2026
           </h2>
         </div>
 
@@ -424,16 +463,22 @@ function Inscription() {
             {/* Área A — Alimentación */}
             <div className="border-b-2 border-dashed border-void/10 bg-void p-8 text-white lg:border-b-0 lg:border-r-2">
               <div className="mb-6 flex items-center gap-3">
-                <span className="font-pixel text-[9px] tracking-wider text-mint">ALIMENTACIÓN COMPLETA</span>
+                <span className="font-pixel text-[9px] tracking-wider text-mint">
+                  ALIMENTACIÓN COMPLETA
+                </span>
               </div>
-              <h3 className="font-display text-2xl font-bold text-white">Incluida durante los 3 días</h3>
+              <h3 className="font-display text-2xl font-bold text-white">
+                Incluida durante los 3 días
+              </h3>
               <ul className="mt-6 space-y-4">
                 {MEALS.map((m) => (
                   <li
                     key={m.day}
                     className="flex items-center justify-between rounded-xl border border-white/10 bg-grape/25 px-5 py-4"
                   >
-                    <span className="font-display font-bold text-mint">{m.day}</span>
+                    <span className="font-display font-bold text-mint">
+                      {m.day}
+                    </span>
                     <span className="text-sm text-lavender">{m.items}</span>
                   </li>
                 ))}
@@ -442,7 +487,9 @@ function Inscription() {
 
             {/* Área B — Checklist */}
             <div className="bg-[#F8F9FA] p-8">
-              <h3 className="font-display text-2xl font-bold text-void">Todo lo que incluye tu cupo</h3>
+              <h3 className="font-display text-2xl font-bold text-void">
+                Todo lo que incluye tu cupo
+              </h3>
               <ul className="mt-6 space-y-3">
                 {BENEFITS.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-void/70">
@@ -473,13 +520,16 @@ function Inscription() {
 /* Section — GameJamPlus — Deep Purple                               */
 /* ---------------------------------------------------------------- */
 
-const GJP_STEPS = ['Crea', 'Valida', 'Conecta', 'Continúa']
+const GJP_STEPS = ["Crea", "Valida", "Conecta", "Continúa"]
 
 function GameJamPlus() {
   return (
-    <section id="gamejamplus" className="relative overflow-hidden bg-grape text-white">
+    <section
+      id="gamejamplus"
+      className="relative overflow-hidden bg-grape text-white"
+    >
       <img
-        src={gamejamplusBg}
+        src="/assets/crackvibes_bg2.jpg"
         alt=""
         aria-hidden
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20"
@@ -495,10 +545,11 @@ function GameJamPlus() {
             De la Jam al <span className="text-mint">Siguiente Nivel</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-lavender">
-            Este año queremos que los proyectos no terminen cuando termine la Jam. La Caribe Game Jam estará
-            conectada con GameJamPlus, una iniciativa internacional que permite que proyectos destacados continúen su
-            desarrollo mediante mentoría, networking, incubación, aceleración y conexión con un circuito
-            internacional de videojuegos.
+            Este año queremos que los proyectos no terminen cuando termine la
+            Jam. La Caribe Game Jam estará conectada con GameJamPlus, una
+            iniciativa internacional que permite que proyectos destacados
+            continúen su desarrollo mediante mentoría, networking, incubación,
+            aceleración y conexión con un circuito internacional de videojuegos.
           </p>
         </div>
 
@@ -507,7 +558,9 @@ function GameJamPlus() {
             <div key={step} className="relative">
               <div className="rounded-2xl border border-mint/30 bg-white/5 p-7 backdrop-blur-md transition-colors hover:border-mint/70">
                 <div className="font-pixel text-[10px] text-mint">0{i + 1}</div>
-                <div className="mt-4 font-display text-2xl font-bold text-white">{step}</div>
+                <div className="mt-4 font-display text-2xl font-bold text-white">
+                  {step}
+                </div>
               </div>
               {i < GJP_STEPS.length - 1 && (
                 <span className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 font-display text-2xl font-bold text-mint lg:block">
@@ -528,38 +581,38 @@ function GameJamPlus() {
 
 const AGENDA = [
   {
-    day: 'DÍA 1',
-    date: 'Viernes 16 de Octubre',
+    day: "DÍA 1",
+    date: "Viernes 16 de Octubre",
     items: [
-      '4:30 p.m. — Ingreso, registro y acreditación.',
-      'Apertura Caribe Game Jam: bienvenida, reglas y aliados.',
-      'Revelación del reto secreto.',
-      'Formación de equipos y comienzo de la Jam.',
-      'Cena incluida.',
-      '10:00 p.m. — Cierre de la jornada.',
+      "4:30 p.m. — Ingreso, registro y acreditación.",
+      "Apertura Caribe Game Jam: bienvenida, reglas y aliados.",
+      "Revelación del reto secreto.",
+      "Formación de equipos y comienzo de la Jam.",
+      "Cena incluida.",
+      "10:00 p.m. — Cierre de la jornada.",
     ],
   },
   {
-    day: 'DÍA 2',
-    date: 'Sábado 17 de Octubre',
+    day: "DÍA 2",
+    date: "Sábado 17 de Octubre",
     items: [
-      '7:00 a.m. — Apertura.',
-      'Desarrollo intensivo de proyectos.',
-      'Mentorías, playtesting, networking y acompañamiento de expertos.',
-      'Desayuno, almuerzo y cena incluidos.',
-      '10:00 p.m. — Cierre de la jornada.',
+      "7:00 a.m. — Apertura.",
+      "Desarrollo intensivo de proyectos.",
+      "Mentorías, playtesting, networking y acompañamiento de expertos.",
+      "Desayuno, almuerzo y cena incluidos.",
+      "10:00 p.m. — Cierre de la jornada.",
     ],
   },
   {
-    day: 'DÍA 3',
-    date: 'Domingo 18 de Octubre',
+    day: "DÍA 3",
+    date: "Domingo 18 de Octubre",
     items: [
-      '7:00 a.m. — Apertura.',
-      'Última etapa de desarrollo y preparación de entregas.',
-      'Entrega de proyectos, showcase y evaluación.',
-      'Premiación y cierre.',
-      'Desayuno y almuerzo incluidos.',
-      '5:00 p.m. — Finalización del evento.',
+      "7:00 a.m. — Apertura.",
+      "Última etapa de desarrollo y preparación de entregas.",
+      "Entrega de proyectos, showcase y evaluación.",
+      "Premiación y cierre.",
+      "Desayuno y almuerzo incluidos.",
+      "5:00 p.m. — Finalización del evento.",
     ],
   },
 ]
@@ -571,8 +624,12 @@ function Agenda() {
       <div className="mx-auto max-w-7xl px-6 py-24">
         <div className="mb-12 flex flex-col items-start gap-4">
           <PixelBadge>CRONOGRAMA</PixelBadge>
-          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">Agenda Oficial</h2>
-          <p className="max-w-xl text-lavender">Tres días de creación intensiva, mentorías y comunidad.</p>
+          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
+            Agenda Oficial
+          </h2>
+          <p className="max-w-xl text-lavender">
+            Tres días de creación intensiva, mentorías y comunidad.
+          </p>
         </div>
 
         {/* Tabs — mobile */}
@@ -582,7 +639,9 @@ function Agenda() {
               key={d.day}
               onClick={() => setActive(i)}
               className={`flex-1 rounded-xl border px-3 py-2 font-display text-sm font-bold transition-colors ${
-                active === i ? 'border-mint bg-mint text-void' : 'border-white/10 bg-grape/20 text-lavender'
+                active === i
+                  ? "border-mint bg-mint text-void"
+                  : "border-white/10 bg-grape/20 text-lavender"
               }`}
             >
               {d.day}
@@ -594,13 +653,22 @@ function Agenda() {
           {AGENDA.map((d, i) => (
             <article
               key={d.day}
-              className={`rounded-2xl border border-mint/30 bg-grape/15 p-7 ${active === i ? 'block' : 'hidden'} lg:block`}
+              className={`rounded-2xl border border-mint/30 bg-grape/15 p-7 ${
+                active === i ? "block" : "hidden"
+              } lg:block`}
             >
-              <div className="font-pixel text-[10px] tracking-wider text-mint">{d.day}</div>
-              <h3 className="mt-3 font-display text-xl font-bold text-white">{d.date}</h3>
+              <div className="font-pixel text-[10px] tracking-wider text-mint">
+                {d.day}
+              </div>
+              <h3 className="mt-3 font-display text-xl font-bold text-white">
+                {d.date}
+              </h3>
               <ul className="mt-5 space-y-3">
                 {d.items.map((it) => (
-                  <li key={it} className="flex gap-3 text-sm leading-relaxed text-lavender">
+                  <li
+                    key={it}
+                    className="flex gap-3 text-sm leading-relaxed text-lavender"
+                  >
                     <span className="mt-2 h-1.5 w-1.5 flex-none bg-mint" />
                     {it}
                   </li>
@@ -620,9 +688,13 @@ function Agenda() {
 
 const CATEGORIES = [
   {
-    tag: 'CODE',
-    title: 'Programación & Mecánicas',
-    bullets: ['Prototipado en Unity / Godot', 'Gameplay y sistemas', 'Optimización y build final'],
+    tag: "CODE",
+    title: "Programación & Mecánicas",
+    bullets: [
+      "Prototipado en Unity / Godot",
+      "Gameplay y sistemas",
+      "Optimización y build final",
+    ],
     icon: (
       <>
         <rect x="6" y="14" width="10" height="10" />
@@ -634,9 +706,13 @@ const CATEGORIES = [
     ),
   },
   {
-    tag: 'ART',
-    title: 'Arte & Narrativa',
-    bullets: ['Pixel art y sprites', 'Modelado low-poly', 'Worldbuilding e historia'],
+    tag: "ART",
+    title: "Arte & Narrativa",
+    bullets: [
+      "Pixel art y sprites",
+      "Modelado low-poly",
+      "Worldbuilding e historia",
+    ],
     icon: (
       <>
         <rect x="6" y="6" width="8" height="8" />
@@ -648,9 +724,13 @@ const CATEGORIES = [
     ),
   },
   {
-    tag: 'AUDIO',
-    title: 'Diseño Sonoro & Música',
-    bullets: ['Bandas sonoras chiptune', 'Efectos de sonido', 'Ambientes inmersivos'],
+    tag: "AUDIO",
+    title: "Diseño Sonoro & Música",
+    bullets: [
+      "Bandas sonoras chiptune",
+      "Efectos de sonido",
+      "Ambientes inmersivos",
+    ],
     icon: (
       <>
         <rect x="6" y="18" width="6" height="6" />
@@ -668,9 +748,12 @@ function Categories() {
       <div className="mx-auto max-w-7xl px-6 py-24">
         <div className="mb-14 flex flex-col items-start gap-4">
           <PixelBadge>CATEGORÍAS</PixelBadge>
-          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">Categorías y Desafíos</h2>
+          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
+            Categorías y Desafíos
+          </h2>
           <p className="max-w-xl text-lavender">
-            Arma tu equipo y compite en los tres frentes que definen un gran videojuego.
+            Arma tu equipo y compite en los tres frentes que definen un gran
+            videojuego.
           </p>
         </div>
 
@@ -681,17 +764,27 @@ function Categories() {
               className="group rounded-2xl border border-mint/40 bg-void p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_45px_-12px_rgba(34,225,157,0.8)]"
             >
               <div className="mb-6 inline-flex rounded-xl border border-mint/30 bg-grape/30 p-3">
-                <svg viewBox="0 0 42 42" className="h-10 w-10" fill="#22E19D" aria-hidden>
+                <svg
+                  viewBox="0 0 42 42"
+                  className="h-10 w-10"
+                  fill="#22E19D"
+                  aria-hidden
+                >
                   {c.icon}
                 </svg>
               </div>
               <div className="mb-3">
                 <PixelBadge>{c.tag}</PixelBadge>
               </div>
-              <h3 className="font-display text-2xl font-bold text-white">{c.title}</h3>
+              <h3 className="font-display text-2xl font-bold text-white">
+                {c.title}
+              </h3>
               <ul className="mt-4 space-y-2">
                 {c.bullets.map((b) => (
-                  <li key={b} className="flex items-center gap-2 text-sm text-lavender">
+                  <li
+                    key={b}
+                    className="flex items-center gap-2 text-sm text-lavender"
+                  >
                     <span className="h-1.5 w-1.5 flex-none bg-mint" />
                     {b}
                   </li>
@@ -710,12 +803,42 @@ function Categories() {
 /* ---------------------------------------------------------------- */
 
 const MENTORS = [
-  { name: 'Laura Restrepo', role: 'Game Designer', studio: 'Efecto Studios', img: '/assets/mentors/laura-restrepo.jpg' },
-  { name: 'Andrés Molina', role: 'Gameplay Programmer', studio: 'Brainz', img: '/assets/mentors/andres-molina.jpg' },
-  { name: 'Valentina Ríos', role: 'Art Director 2D/3D', studio: 'Teravision', img: '/assets/mentors/valentina-rios.jpg' },
-  { name: 'Camilo Duarte', role: 'Sound Designer', studio: 'Freelance', img: '/assets/mentors/camilo-duarte.jpg' },
-  { name: 'Daniela Pérez', role: 'Narrative Designer', studio: 'Indie', img: '/assets/mentors/daniela-perez.jpg' },
-  { name: 'Sergio Vargas', role: 'Producer', studio: 'CracktiveLab', img: '/assets/mentors/sergio-vargas.jpg' },
+  {
+    name: "Laura Restrepo",
+    role: "Game Designer",
+    studio: "Efecto Studios",
+    img: "/assets/mentors/laura-restrepo.jpg",
+  },
+  {
+    name: "Andrés Molina",
+    role: "Gameplay Programmer",
+    studio: "Brainz",
+    img: "/assets/mentors/andres-molina.jpg",
+  },
+  {
+    name: "Valentina Ríos",
+    role: "Art Director 2D/3D",
+    studio: "Teravision",
+    img: "/assets/mentors/valentina-rios.jpg",
+  },
+  {
+    name: "Camilo Duarte",
+    role: "Sound Designer",
+    studio: "Freelance",
+    img: "/assets/mentors/camilo-duarte.jpg",
+  },
+  {
+    name: "Daniela Pérez",
+    role: "Narrative Designer",
+    studio: "Indie",
+    img: "/assets/mentors/daniela-perez.jpg",
+  },
+  {
+    name: "Sergio Vargas",
+    role: "Producer",
+    studio: "CracktiveLab",
+    img: "/assets/mentors/sergio-vargas.jpg",
+  },
 ]
 
 function CrackVibes() {
@@ -727,16 +850,19 @@ function CrackVibes() {
             <div className="mb-4">
               <PixelBadge tone="purple">ROAD TO CARIBE GAME JAM</PixelBadge>
             </div>
-            <h2 className="font-display text-3xl font-bold text-void sm:text-4xl">CrackVibes</h2>
+            <h2 className="font-display text-3xl font-bold text-void sm:text-4xl">
+              CrackVibes
+            </h2>
             <p className="mt-4 text-lg leading-relaxed text-void/70">
-              Antes de la Jam, nuestra comunidad se prepara. A través de CrackVibes desarrollamos encuentros de
-              aprendizaje y conexión con profesionales de la industria para fortalecer habilidades y llegar mejor
-              preparados.
+              Antes de la Jam, nuestra comunidad se prepara. A través de
+              CrackVibes desarrollamos encuentros de aprendizaje y conexión con
+              profesionales de la industria para fortalecer habilidades y llegar
+              mejor preparados.
             </p>
           </div>
           <div className="relative min-h-[260px] overflow-hidden lg:min-h-full">
             <img
-              src={crackvibesBg}
+              src="/assets/crackvibes_bg.jpg"
               alt="Comunidad CrackVibes reunida en un encuentro previo a la Caribe Game Jam"
               className="h-full w-full object-cover"
               loading="lazy"
@@ -746,7 +872,9 @@ function CrackVibes() {
         </div>
 
         <div className="mt-16">
-          <h3 className="mb-8 font-display text-2xl font-bold text-void">Mentores Confirmados</h3>
+          <h3 className="mb-8 font-display text-2xl font-bold text-void">
+            Mentores Confirmados
+          </h3>
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
             {MENTORS.map((m) => (
               <article key={m.name} className="group text-center">
@@ -758,7 +886,9 @@ function CrackVibes() {
                     loading="lazy"
                   />
                 </div>
-                <h4 className="mt-3 font-display text-sm font-bold text-void">{m.name}</h4>
+                <h4 className="mt-3 font-display text-sm font-bold text-void">
+                  {m.name}
+                </h4>
                 <p className="text-xs text-void/60">{m.role}</p>
                 <p className="text-xs font-semibold text-grape">{m.studio}</p>
               </article>
@@ -774,29 +904,41 @@ function CrackVibes() {
 /* Section — Patrocinadores y Aliados — Light                        */
 /* ---------------------------------------------------------------- */
 
-type Logo = { name: string; src?: string; dark?: boolean }
+type Logo = { name: string src?: string dark?: boolean }
 
 const SPONSORS: Logo[] = [
-  { name: 'Universidad de la Costa', src: '/assets/cuc-white.png', dark: true },
-  { name: 'EquinoxioLab', src: '/assets/equinoxiolab.webp', dark: true },
-  { name: 'IDITEK', src: '/assets/iditek-new.png', dark: true },
-  { name: 'OP', src: '/assets/op.png', dark: true },
-  { name: 'Mito', src: '/assets/mito.png', dark: true },
+  { name: "Universidad de la Costa", src: "/assets/cuc-white.png", dark: true },
+  { name: "EquinoxioLab", src: "/assets/equinoxiolab.webp", dark: true },
+  { name: "IDITEK", src: "/assets/iditek-new.png", dark: true },
+  { name: "OP", src: "/assets/op.png", dark: true },
+  { name: "Mito", src: "/assets/mito.png", dark: true },
 ]
 
 const ALLIES: Logo[] = [
-  { name: 'IGDA Colombia', src: '/assets/igda.png', dark: true },
-  { name: 'Frecuencia Gamer', src: '/assets/frecuencia-gamer.png', dark: true },
-  { name: 'First Flame', src: '/assets/first-flame.png', dark: true },
+  { name: "IGDA Colombia", src: "/assets/igda.png", dark: true },
+  { name: "Frecuencia Gamer", src: "/assets/frecuencia-gamer.png", dark: true },
+  { name: "First Flame", src: "/assets/first-flame.png", dark: true },
 ]
 
 const DIFFUSION: Logo[] = [
-  { name: 'Maleiwa Studio', src: '/assets/maleiwa.png', dark: true },
-  { name: 'Aventuras Bonitas', src: '/assets/aventuras-bonitas.png', dark: true },
-  { name: 'Rival Arts', src: '/assets/rival-arts.png', dark: true },
+  { name: "Maleiwa Studio", src: "/assets/maleiwa.png", dark: true },
+  {
+    name: "Aventuras Bonitas",
+    src: "/assets/aventuras-bonitas.png",
+    dark: true,
+  },
+  { name: "Rival Arts", src: "/assets/rival-arts.png", dark: true },
 ]
 
-function LogoCard({ logo, height, imgMax }: { logo: Logo; height: string; imgMax: string }) {
+function LogoCard({
+  logo,
+  height,
+  imgMax,
+}: {
+  logo: Logo
+  height: string
+  imgMax: string
+}) {
   if (!logo.src) {
     return (
       <div
@@ -809,10 +951,15 @@ function LogoCard({ logo, height, imgMax }: { logo: Logo; height: string; imgMax
   return (
     <div
       className={`flex ${height} items-center justify-center rounded-2xl border p-6 shadow-sm transition-shadow hover:shadow-md ${
-        logo.dark ? 'border-void bg-void' : 'border-void/10 bg-white'
+        logo.dark ? "border-void bg-void" : "border-void/10 bg-white"
       }`}
     >
-      <img src={logo.src} alt={logo.name} className={`${imgMax} w-auto object-contain`} loading="lazy" />
+      <img
+        src={logo.src}
+        alt={logo.name}
+        className={`${imgMax} w-auto object-contain`}
+        loading="lazy"
+      />
     </div>
   )
 }
@@ -826,44 +973,72 @@ function Partners() {
             <PixelBadge tone="purple">ALIADOS</PixelBadge>
           </div>
           <h2 className="font-display text-3xl font-bold text-void sm:text-4xl">
-            Juntos fortalecemos el ecosistema de videojuegos del Caribe colombiano
+            Juntos fortalecemos el ecosistema de videojuegos del Caribe
+            colombiano
           </h2>
         </div>
 
         {/* Organizador principal */}
         <div className="mx-auto mb-14 flex max-w-md flex-col items-center gap-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-grape">Organizador principal</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-grape">
+            Organizador principal
+          </span>
           <div className="flex h-28 w-full items-center justify-center rounded-2xl border border-void bg-void px-10 shadow-sm">
-            <img src="/assets/cracktivelab-variant.png" alt="CracktiveLab" className="max-h-12 w-auto max-w-[80%] object-contain" />
+            <img
+              src="/assets/cracktivelab-variant.png"
+              alt="CracktiveLab"
+              className="max-h-12 w-auto max-w-[80%] object-contain"
+            />
           </div>
         </div>
 
         {/* Nivel 1 — Patrocinadores */}
         <div className="mb-12">
-          <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">PATROCINADORES</p>
+          <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">
+            PATROCINADORES
+          </p>
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
             {SPONSORS.map((s) => (
-              <LogoCard key={s.name} logo={s} height="h-28" imgMax="max-h-14 max-w-[80%]" />
+              <LogoCard
+                key={s.name}
+                logo={s}
+                height="h-28"
+                imgMax="max-h-14 max-w-[80%]"
+              />
             ))}
           </div>
         </div>
 
         {/* Nivel 2 — Aliados */}
         <div className="mb-12">
-          <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">ALIADOS</p>
+          <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">
+            ALIADOS
+          </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {ALLIES.map((a) => (
-              <LogoCard key={a.name} logo={a} height="h-24" imgMax="max-h-12 max-w-[70%]" />
+              <LogoCard
+                key={a.name}
+                logo={a}
+                height="h-24"
+                imgMax="max-h-12 max-w-[70%]"
+              />
             ))}
           </div>
         </div>
 
         {/* Nivel 3 — Aliados de difusión */}
         <div>
-          <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">ALIADOS DE DIFUSIÓN</p>
+          <p className="mb-5 text-center font-pixel text-[9px] tracking-widest text-grape">
+            ALIADOS DE DIFUSIÓN
+          </p>
           <div className="mx-auto grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
             {DIFFUSION.map((d) => (
-              <LogoCard key={d.name} logo={d} height="h-20" imgMax="max-h-10 max-w-[70%]" />
+              <LogoCard
+                key={d.name}
+                logo={d}
+                height="h-20"
+                imgMax="max-h-10 max-w-[70%]"
+              />
             ))}
           </div>
         </div>
@@ -876,25 +1051,25 @@ function Partners() {
 /* Section — FAQ acordeón — Dark                                     */
 /* ---------------------------------------------------------------- */
 
-const FAQS: { q: string; a: React.ReactNode }[] = [
+const FAQS: { q: string a: React.ReactNode }[] = [
   {
-    q: '¿Qué incluye el valor de la inscripción?',
-    a: 'Incluye alimentación completa durante los 3 días, camiseta e identificación oficial, acceso a mentorías y acompañamiento continuo, actividades de networking, participación en premios, showcase final y conexión con la comunidad y GameJamPlus.',
+    q: "¿Qué incluye el valor de la inscripción?",
+    a: "Incluye alimentación completa durante los 3 días, camiseta e identificación oficial, acceso a mentorías y acompañamiento continuo, actividades de networking, participación en premios, showcase final y conexión con la comunidad y GameJamPlus.",
   },
   {
-    q: '¿Quiénes pueden participar?',
-    a: 'Perfiles abiertos: desarrolladores, artistas 2D/3D, músicos, diseñadores, narrativa y más. Todos los talentos son bienvenidos.',
+    q: "¿Quiénes pueden participar?",
+    a: "Perfiles abiertos: desarrolladores, artistas 2D/3D, músicos, diseñadores, narrativa y más. Todos los talentos son bienvenidos.",
   },
   {
-    q: '¿Tengo que saber programar, dibujar o hacer audio?',
-    a: 'No necesitas ser experto. Habrá mentores que te acompañarán y aprenderás haciendo junto a tu equipo.',
+    q: "¿Tengo que saber programar, dibujar o hacer audio?",
+    a: "No necesitas ser experto. Habrá mentores que te acompañarán y aprenderás haciendo junto a tu equipo.",
   },
   {
-    q: '¿Necesito tener un equipo antes de inscribirme?',
-    a: 'Puedes participar de forma individual o en grupo. Habrá dinámicas de integración para conformar equipos multidisciplinarios.',
+    q: "¿Necesito tener un equipo antes de inscribirme?",
+    a: "Puedes participar de forma individual o en grupo. Habrá dinámicas de integración para conformar equipos multidisciplinarios.",
   },
   {
-    q: '¿Pueden participar menores de edad?',
+    q: "¿Pueden participar menores de edad?",
     a: (
       <div className="space-y-4">
         <p>Sí, mediante un adulto responsable y consentimiento informado.</p>
@@ -902,8 +1077,19 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
           href="#"
           className="inline-flex items-center gap-2 rounded-full bg-mint px-5 py-2.5 font-display text-sm font-bold text-void transition-all hover:shadow-[0_0_25px_-4px_rgba(34,225,157,0.85)]"
         >
-          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-            <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            viewBox="0 0 24 24"
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            aria-hidden
+          >
+            <path
+              d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
           Descargar Formato de Consentimiento Informado (PDF)
         </a>
@@ -911,20 +1097,20 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
     ),
   },
   {
-    q: '¿Debo llevar computador?',
-    a: 'Sí, debes traer tu laptop personal y las herramientas de trabajo que necesites.',
+    q: "¿Debo llevar computador?",
+    a: "Sí, debes traer tu laptop personal y las herramientas de trabajo que necesites.",
   },
   {
-    q: '¿Cómo se conformarán los equipos?',
-    a: 'A través de una dinámica de formación multidisciplinaria al inicio del evento.',
+    q: "¿Cómo se conformarán los equipos?",
+    a: "A través de una dinámica de formación multidisciplinaria al inicio del evento.",
   },
   {
-    q: '¿La Caribe Game Jam está conectada con GameJamPlus?',
-    a: 'Sí. Los proyectos destacados pueden continuar su desarrollo mediante mentoría, incubación y aceleración dentro del circuito internacional de GameJamPlus.',
+    q: "¿La Caribe Game Jam está conectada con GameJamPlus?",
+    a: "Sí. Los proyectos destacados pueden continuar su desarrollo mediante mentoría, incubación y aceleración dentro del circuito internacional de GameJamPlus.",
   },
   {
-    q: '¿Puedo quedarme a dormir en el lugar del evento?',
-    a: 'No. El evento tiene horarios estrictos de apertura y cierre cada día.',
+    q: "¿Puedo quedarme a dormir en el lugar del evento?",
+    a: "No. El evento tiene horarios estrictos de apertura y cierre cada día.",
   },
 ]
 
@@ -935,7 +1121,9 @@ function Faq() {
       <div className="mx-auto max-w-4xl px-6 py-24">
         <div className="mb-12 flex flex-col items-start gap-4">
           <PixelBadge>PREGUNTAS FRECUENTES</PixelBadge>
-          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">Preguntas Frecuentes</h2>
+          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
+            Preguntas Frecuentes
+          </h2>
         </div>
 
         <div className="space-y-3">
@@ -951,14 +1139,22 @@ function Faq() {
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                 >
-                  <span className="font-display text-base font-bold text-white sm:text-lg">{f.q}</span>
+                  <span className="font-display text-base font-bold text-white sm:text-lg">
+                    {f.q}
+                  </span>
                   <span
-                    className={`flex-none font-display text-2xl text-mint transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}
+                    className={`flex-none font-display text-2xl text-mint transition-transform duration-200 ${
+                      isOpen ? "rotate-45" : ""
+                    }`}
                   >
                     +
                   </span>
                 </button>
-                {isOpen && <div className="px-6 pb-6 leading-relaxed text-lavender">{f.a}</div>}
+                {isOpen && (
+                  <div className="px-6 pb-6 leading-relaxed text-lavender">
+                    {f.a}
+                  </div>
+                )}
               </div>
             )
           })}
@@ -974,8 +1170,8 @@ function Faq() {
 
 const CRACK_PILLARS = [
   {
-    title: 'Emprendimiento',
-    desc: 'Crecimiento de nuevos estudios y proyectos digitales.',
+    title: "Emprendimiento",
+    desc: "Crecimiento de nuevos estudios y proyectos digitales.",
     icon: (
       <>
         <rect x="16" y="4" width="10" height="10" />
@@ -985,8 +1181,8 @@ const CRACK_PILLARS = [
     ),
   },
   {
-    title: 'Aprendizaje',
-    desc: 'Fortalecimiento de capacidades técnicas y creativas.',
+    title: "Aprendizaje",
+    desc: "Fortalecimiento de capacidades técnicas y creativas.",
     icon: (
       <>
         <rect x="6" y="14" width="10" height="10" />
@@ -996,8 +1192,8 @@ const CRACK_PILLARS = [
     ),
   },
   {
-    title: 'Comunidad',
-    desc: 'Espacios de encuentro, colaboración y visibilidad.',
+    title: "Comunidad",
+    desc: "Espacios de encuentro, colaboración y visibilidad.",
     icon: (
       <>
         <rect x="6" y="8" width="10" height="10" />
@@ -1019,21 +1215,33 @@ function Institutional() {
               Epicentro de industrias digitales
             </h2>
             <p className="mt-4 leading-relaxed text-lavender">
-              Entidad sin ánimo de lucro que dinamiza la industria de videojuegos y contenidos digitales en el Caribe
-              colombiano.
+              Entidad sin ánimo de lucro que dinamiza la industria de
+              videojuegos y contenidos digitales en el Caribe colombiano.
             </p>
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {CRACK_PILLARS.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-white/10 bg-void/40 p-6 backdrop-blur">
+              <div
+                key={p.title}
+                className="rounded-2xl border border-white/10 bg-void/40 p-6 backdrop-blur"
+              >
                 <div className="mb-4 inline-flex rounded-xl border border-mint/30 bg-grape/30 p-3">
-                  <svg viewBox="0 0 42 42" className="h-8 w-8" fill="#22E19D" aria-hidden>
+                  <svg
+                    viewBox="0 0 42 42"
+                    className="h-8 w-8"
+                    fill="#22E19D"
+                    aria-hidden
+                  >
                     {p.icon}
                   </svg>
                 </div>
-                <h3 className="font-display text-xl font-bold text-white">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-lavender">{p.desc}</p>
+                <h3 className="font-display text-xl font-bold text-white">
+                  {p.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-lavender">
+                  {p.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -1059,7 +1267,8 @@ function FinalCta() {
               <PixelBadge>READY? PRESS START</PixelBadge>
             </div>
             <h2 className="mx-auto max-w-2xl font-display text-4xl font-bold leading-tight text-white sm:text-5xl">
-              48 horas para hacer historia. ¿Estás listo para crear tu <span className="text-mint">videojuego</span>?
+              48 horas para hacer historia. ¿Estás listo para crear tu{" "}
+              <span className="text-mint">videojuego</span>?
             </h2>
             <div className="mt-9 flex justify-center">
               <PrimaryButton
@@ -1096,15 +1305,15 @@ function FinalCta() {
 
 const SOCIALS = [
   {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/cracktivelab?stkn=dGJ3c2s1M2d4Mjc5',
+    name: "Instagram",
+    href: "https://www.instagram.com/cracktivelab?stkn=dGJ3c2s1M2d4Mjc5",
     icon: (
       <path d="M12 7.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9Zm5.8-7.6a1.05 1.05 0 1 1-1.05-1.05A1.05 1.05 0 0 1 17.8 7.3ZM20.9 8.4a5.2 5.2 0 0 0-1.4-3.7 5.2 5.2 0 0 0-3.7-1.4C14.3 3.2 9.7 3.2 8.2 3.3A5.2 5.2 0 0 0 4.5 4.7 5.2 5.2 0 0 0 3.1 8.4C3 9.9 3 14.5 3.1 16a5.2 5.2 0 0 0 1.4 3.7 5.2 5.2 0 0 0 3.7 1.4c1.5.1 6.1.1 7.6 0a5.2 5.2 0 0 0 3.7-1.4 5.2 5.2 0 0 0 1.4-3.7c.1-1.5.1-6.1 0-7.6Zm-1.9 9.2a2.9 2.9 0 0 1-1.7 1.7c-1.2.5-4 .4-5.3.4s-4.1.1-5.3-.4a2.9 2.9 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.3s-.1-4.1.4-5.3a2.9 2.9 0 0 1 1.7-1.7c1.2-.5 4-.4 5.3-.4s4.1-.1 5.3.4a2.9 2.9 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.3s.1 4.1-.4 5.3Z" />
     ),
   },
   {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/cracktivelab',
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/cracktivelab",
     icon: (
       <path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5v-9h3ZM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25ZM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66Z" />
     ),
@@ -1116,8 +1325,14 @@ function Footer() {
     <footer className="bg-[#09020D]">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-14 md:flex-row">
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <img src="/assets/cracktivelab-blanco-verde.png" alt="CracktiveLab" className="h-8 w-auto" />
-          <p className="font-pixel text-[9px] leading-relaxed text-lavender">CARIBE GAME JAM 2026</p>
+          <img
+            src="/assets/cracktivelab-blanco-verde.png"
+            alt="CracktiveLab"
+            className="h-8 w-auto"
+          />
+          <p className="font-pixel text-[9px] leading-relaxed text-lavender">
+            CARIBE GAME JAM 2026
+          </p>
           <a
             href="https://cracktivelab.com"
             target="_blank"
@@ -1138,7 +1353,12 @@ function Footer() {
               rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-grape/20 text-lavender transition-all hover:border-mint hover:text-mint"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="currentColor"
+                aria-hidden
+              >
                 {s.icon}
               </svg>
             </a>
@@ -1149,8 +1369,12 @@ function Footer() {
         <p className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-center text-xs text-lavender/60 md:flex-row md:text-left">
           <span>© 2026 CracktiveLab. Todos los derechos reservados.</span>
           <span className="flex gap-4">
-            <a href="#" className="hover:text-mint">Términos</a>
-            <a href="#" className="hover:text-mint">Privacidad</a>
+            <a href="#" className="hover:text-mint">
+              Términos
+            </a>
+            <a href="#" className="hover:text-mint">
+              Privacidad
+            </a>
           </span>
         </p>
       </div>
@@ -1160,7 +1384,7 @@ function Footer() {
 
 export default function App() {
   useEffect(() => {
-    document.title = 'Caribe Game Jam 2026'
+    document.title = "Caribe Game Jam 2026"
   }, [])
 
   return (
