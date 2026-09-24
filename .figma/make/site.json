@@ -1,0 +1,10 @@
+{
+  "description": "Discover and register for Caribe Game Jam 2026, a vibrant event for game developers to create, compete, and connect in a dynamic community atmosphere.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
