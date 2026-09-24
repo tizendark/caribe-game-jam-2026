@@ -810,8 +810,8 @@ const ALLIES: Logo[] = [
     dark: true,
   },
   { name: "Rival Arts", src: "/assets/rival-arts.png", dark: true },
-  { name: "FOMO", dark: true },
-  { name: "CaribeDev", dark: true },
+  { name: "FOMO", src: "/assets/fomo.svg", dark: true },
+  { name: "CaribeDev", src: "/assets/caribedev.png", dark: true },
 ]
 
 function LogoCard({
