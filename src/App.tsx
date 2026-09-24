@@ -76,6 +76,31 @@ function PixelBadge({
   )
 }
 
+function FloatingPixelTag({
+  children,
+  className = "",
+  rotate = "-rotate-6",
+  slow = false,
+}: {
+  children: React.ReactNode
+  className?: string
+  rotate?: string
+  slow?: boolean
+}) {
+  return (
+    <div className={`absolute z-20 select-none ${rotate} ${className}`}>
+      <div
+        className={`${
+          slow ? "animate-float-slower" : "animate-float-slow"
+        } inline-flex items-center gap-1.5 rounded-lg border border-[#22E19D] bg-[#0D0314]/90 px-3 py-1.5 font-pixel text-[10px] tracking-wider text-[#22E19D] shadow-[0_0_15px_rgba(34,225,157,0.25)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_22px_rgba(34,225,157,0.45)] sm:text-xs`}
+      >
+        <span className="h-1.5 w-1.5 rounded-full bg-[#22E19D] shadow-[0_0_6px_#22E19D]" />
+        <span>{children}</span>
+      </div>
+    </div>
+  )
+}
+
 function PrimaryButton({
   children,
   className = "",
@@ -248,6 +273,29 @@ function Hero() {
                 className="h-auto w-full object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] transition-transform duration-500 hover:scale-[1.03]"
               />
             </div>
+
+            {/* Badges pixel flotantes estratégicos */}
+            <FloatingPixelTag
+              className="-top-3 -left-2 sm:-top-4 sm:-left-4"
+              rotate="-rotate-6"
+            >
+              [ TEAM UP ]
+            </FloatingPixelTag>
+
+            <FloatingPixelTag
+              className="-top-2.5 -right-2 sm:-top-3.5 sm:-right-4"
+              rotate="rotate-[4deg]"
+              slow
+            >
+              [ GAME ON ]
+            </FloatingPixelTag>
+
+            <FloatingPixelTag
+              className="-bottom-3.5 right-6 sm:right-10"
+              rotate="-rotate-2"
+            >
+              [ 48H READY ]
+            </FloatingPixelTag>
           </div>
 
           <div className="mt-8 w-full max-w-[480px]">
