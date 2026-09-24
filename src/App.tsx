@@ -20,6 +20,7 @@ import logoRival from './assets/rival-arts.png'
 /* Countdown                                                         */
 /* ---------------------------------------------------------------- */
 
+const REGISTRATION_URL = 'https://holafomo.com/es/event/MTIxNg=='
 const TARGET = new Date('2026-10-16T09:00:00-05:00').getTime()
 
 function useCountdown() {
@@ -81,15 +82,22 @@ function PixelBadge({ children, tone = 'mint' }: { children: React.ReactNode; to
 function PrimaryButton({
   children,
   className = '',
-  href = '#inscribete',
+  href = REGISTRATION_URL,
+  target,
+  rel,
 }: {
   children: React.ReactNode
   className?: string
   href?: string
+  target?: string
+  rel?: string
 }) {
+  const isExternal = href.startsWith('http')
   return (
     <a
       href={href}
+      target={target ?? (isExternal ? '_blank' : undefined)}
+      rel={rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
       className={`group inline-flex items-center justify-center gap-2 rounded-xl bg-mint px-7 py-3.5 font-display text-base font-bold text-void transition-all duration-200 hover:shadow-[0_0_35px_-4px_rgba(34,225,157,0.85)] hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint ${className}`}
     >
       {children}
@@ -160,7 +168,9 @@ function Nav() {
           ))}
         </ul>
         <PrimaryButton
-          href="https://holafomo.com"
+          href={REGISTRATION_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full px-5 py-2.5 text-sm"
         >
           Inscríbete · $35.000
@@ -216,7 +226,12 @@ function Hero() {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <PrimaryButton href="https://holafomo.com" className="px-9 py-4 text-lg">
+            <PrimaryButton
+              href={REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-9 py-4 text-lg"
+            >
               INSCRÍBETE AQUÍ
             </PrimaryButton>
             <a
@@ -234,7 +249,7 @@ function Hero() {
           <div className="absolute inset-0 rotate-2 rounded-3xl border border-white/10 bg-grape/20" />
           <div className="absolute inset-0 -rotate-1 overflow-hidden rounded-3xl border border-mint/30">
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&h=1000&fit=crop&auto=format"
+              src="/assets/hero-jam.jpg"
               alt="Equipo de desarrolladores colaborando durante una game jam"
               className="h-full w-full object-cover opacity-90"
             />
@@ -242,14 +257,14 @@ function Hero() {
           </div>
 
           <FloatingSticker
-            src="https://images.unsplash.com/photo-1637073849667-91120a924221?w=280&h=200&fit=crop&auto=format"
+            src="/assets/sticker-teamup.jpg"
             alt="Devs programando en equipo"
             className="left-[-6%] top-[6%] h-28 w-40 sm:h-32 sm:w-48"
             rotate="-8deg"
             label="TEAM UP"
           />
           <FloatingSticker
-            src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=240&h=200&fit=crop&auto=format"
+            src="/assets/sticker-codeon.jpg"
             alt="Desarrollador enfocado en su código"
             className="right-[-4%] top-[18%] h-24 w-32 sm:h-28 sm:w-40"
             rotate="7deg"
@@ -437,7 +452,12 @@ function Inscription() {
                 ))}
               </ul>
               <div className="mt-8">
-                <PrimaryButton href="https://holafomo.com" className="w-full rounded-full">
+                <PrimaryButton
+                  href={REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full rounded-full"
+                >
                   INSCRÍBETE AQUÍ · Cupos limitados
                 </PrimaryButton>
               </div>
@@ -690,12 +710,12 @@ function Categories() {
 /* ---------------------------------------------------------------- */
 
 const MENTORS = [
-  { name: 'Laura Restrepo', role: 'Game Designer', studio: 'Efecto Studios', img: 'photo-1573497019940-1c28c88b4f3e' },
-  { name: 'Andrés Molina', role: 'Gameplay Programmer', studio: 'Brainz', img: 'photo-1500648767791-00dcc994a43e' },
-  { name: 'Valentina Ríos', role: 'Art Director 2D/3D', studio: 'Teravision', img: 'photo-1544005313-94ddf0286df2' },
-  { name: 'Camilo Duarte', role: 'Sound Designer', studio: 'Freelance', img: 'photo-1507003211169-0a1dd7228f2d' },
-  { name: 'Daniela Pérez', role: 'Narrative Designer', studio: 'Indie', img: 'photo-1580489944761-15a19d654956' },
-  { name: 'Sergio Vargas', role: 'Producer', studio: 'CracktiveLab', img: 'photo-1519085360753-af0119f7cbe7' },
+  { name: 'Laura Restrepo', role: 'Game Designer', studio: 'Efecto Studios', img: '/assets/mentors/laura-restrepo.jpg' },
+  { name: 'Andrés Molina', role: 'Gameplay Programmer', studio: 'Brainz', img: '/assets/mentors/andres-molina.jpg' },
+  { name: 'Valentina Ríos', role: 'Art Director 2D/3D', studio: 'Teravision', img: '/assets/mentors/valentina-rios.jpg' },
+  { name: 'Camilo Duarte', role: 'Sound Designer', studio: 'Freelance', img: '/assets/mentors/camilo-duarte.jpg' },
+  { name: 'Daniela Pérez', role: 'Narrative Designer', studio: 'Indie', img: '/assets/mentors/daniela-perez.jpg' },
+  { name: 'Sergio Vargas', role: 'Producer', studio: 'CracktiveLab', img: '/assets/mentors/sergio-vargas.jpg' },
 ]
 
 function CrackVibes() {
@@ -732,7 +752,7 @@ function CrackVibes() {
               <article key={m.name} className="group text-center">
                 <div className="mx-auto aspect-square w-full overflow-hidden rounded-2xl border border-void/10 bg-[#F8F9FA]">
                   <img
-                    src={`https://images.unsplash.com/${m.img}?w=300&h=300&fit=crop&auto=format`}
+                    src={m.img}
                     alt={m.name}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
@@ -757,23 +777,23 @@ function CrackVibes() {
 type Logo = { name: string; src?: string; dark?: boolean }
 
 const SPONSORS: Logo[] = [
-  { name: 'Universidad de la Costa', src: logoCuc, dark: true },
-  { name: 'EquinoxioLab', src: logoEquinoxio, dark: true },
-  { name: 'IDITEK', src: logoIditek, dark: true },
-  { name: 'OP', src: logoOp, dark: true },
-  { name: 'Mito', src: logoMito, dark: true },
+  { name: 'Universidad de la Costa', src: '/assets/cuc-white.png', dark: true },
+  { name: 'EquinoxioLab', src: '/assets/equinoxiolab.webp', dark: true },
+  { name: 'IDITEK', src: '/assets/iditek-new.png', dark: true },
+  { name: 'OP', src: '/assets/op.png', dark: true },
+  { name: 'Mito', src: '/assets/mito.png', dark: true },
 ]
 
 const ALLIES: Logo[] = [
-  { name: 'IGDA Colombia', src: logoIgda, dark: true },
-  { name: 'Frecuencia Gamer', src: logoFrecuencia, dark: true },
-  { name: 'First Flame', src: logoFirstFlame, dark: true },
+  { name: 'IGDA Colombia', src: '/assets/igda.png', dark: true },
+  { name: 'Frecuencia Gamer', src: '/assets/frecuencia-gamer.png', dark: true },
+  { name: 'First Flame', src: '/assets/first-flame.png', dark: true },
 ]
 
 const DIFFUSION: Logo[] = [
-  { name: 'Maleiwa Studio', src: logoMaleiwa, dark: true },
-  { name: 'Aventuras Bonitas', src: logoAventuras, dark: true },
-  { name: 'Rival Arts', src: logoRival, dark: true },
+  { name: 'Maleiwa Studio', src: '/assets/maleiwa.png', dark: true },
+  { name: 'Aventuras Bonitas', src: '/assets/aventuras-bonitas.png', dark: true },
+  { name: 'Rival Arts', src: '/assets/rival-arts.png', dark: true },
 ]
 
 function LogoCard({ logo, height, imgMax }: { logo: Logo; height: string; imgMax: string }) {
@@ -814,7 +834,7 @@ function Partners() {
         <div className="mx-auto mb-14 flex max-w-md flex-col items-center gap-4">
           <span className="text-xs font-semibold uppercase tracking-widest text-grape">Organizador principal</span>
           <div className="flex h-28 w-full items-center justify-center rounded-2xl border border-void bg-void px-10 shadow-sm">
-            <img src={logoCracktiveVariant} alt="CracktiveLab" className="max-h-12 w-auto max-w-[80%] object-contain" />
+            <img src="/assets/cracktivelab-variant.png" alt="CracktiveLab" className="max-h-12 w-auto max-w-[80%] object-contain" />
           </div>
         </div>
 
@@ -1042,13 +1062,23 @@ function FinalCta() {
               48 horas para hacer historia. ¿Estás listo para crear tu <span className="text-mint">videojuego</span>?
             </h2>
             <div className="mt-9 flex justify-center">
-              <PrimaryButton href="https://holafomo.com" className="px-9 py-4 text-lg">
+              <PrimaryButton
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-9 py-4 text-lg"
+              >
                 Inscríbete en HolaFOMO
               </PrimaryButton>
             </div>
             <p className="mt-6 text-sm text-lavender">
               Organizado por CracktiveLab (
-              <a href="https://cracktivelab.com" className="text-mint underline-offset-2 hover:underline">
+              <a
+                href="https://cracktivelab.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mint underline-offset-2 hover:underline"
+              >
                 cracktivelab.com
               </a>
               ).
@@ -1086,9 +1116,14 @@ function Footer() {
     <footer className="bg-[#09020D]">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-14 md:flex-row">
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <img src={logoBlancoVerde} alt="CracktiveLab" className="h-8 w-auto" />
+          <img src="/assets/cracktivelab-blanco-verde.png" alt="CracktiveLab" className="h-8 w-auto" />
           <p className="font-pixel text-[9px] leading-relaxed text-lavender">CARIBE GAME JAM 2026</p>
-          <a href="https://cracktivelab.com" className="text-sm text-lavender/70 transition-colors hover:text-mint">
+          <a
+            href="https://cracktivelab.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-lavender/70 transition-colors hover:text-mint"
+          >
             cracktivelab.com
           </a>
         </div>
@@ -1124,6 +1159,10 @@ function Footer() {
 }
 
 export default function App() {
+  useEffect(() => {
+    document.title = 'Caribe Game Jam 2026'
+  }, [])
+
   return (
     <div className="min-h-screen bg-void">
       <Nav />
