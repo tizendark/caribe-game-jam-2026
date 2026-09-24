@@ -105,45 +105,6 @@ function PrimaryButton({
   )
 }
 
-function FloatingSticker({
-  src,
-  alt,
-  className = "",
-  rotate = "-6deg",
-  slow = false,
-  label,
-}: {
-  src: string
-  alt: string
-  className?: string
-  rotate?: string
-  slow?: boolean
-  label?: string
-}) {
-  return (
-    <figure
-      className={`absolute ${
-        slow ? "animate-float-slower" : "animate-float-slow"
-      } ${className}`}
-      style={{ transform: `rotate(${rotate})` }}
-    >
-      <div className="overflow-hidden rounded-xl border-4 border-white bg-grape shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)]">
-        <img
-          src={src}
-          alt={alt}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </div>
-      {label && (
-        <figcaption className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap">
-          <PixelBadge>{label}</PixelBadge>
-        </figcaption>
-      )}
-    </figure>
-  )
-}
-
 /* ---------------------------------------------------------------- */
 /* Nav + Hero — Dark                                                 */
 /* ---------------------------------------------------------------- */
@@ -219,15 +180,17 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            CARIBE
-            <br />
-            <span className="text-mint [text-shadow:0_0_25px_rgba(34,225,157,0.5)]">
-              GAME JAM
-            </span>
-            <br />
-            2026
-          </h1>
+          <div className="relative mb-6">
+            <h1 className="sr-only">Caribe Game Jam 2026</h1>
+            <div className="relative inline-block max-w-full">
+              <div className="absolute -inset-6 -z-10 rounded-3xl bg-mint/15 blur-2xl" />
+              <img
+                src="/assets/cgj2026-logo.png"
+                alt="Caribe Game Jam 2026"
+                className="h-auto w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[490px] object-contain drop-shadow-[0_10px_35px_rgba(34,225,157,0.3)] select-none transition-transform duration-300 hover:scale-[1.02]"
+              />
+            </div>
+          </div>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-lavender sm:text-lg">
             48 horas para crear, aprender y llevar una idea a videojuego. Tres
@@ -269,35 +232,25 @@ function Hero() {
           </p>
         </div>
 
-        {/* Visual: photo collage + floating stickers + countdown */}
-        <div className="relative h-[460px] sm:h-[520px]">
-          <div className="absolute inset-0 rotate-2 rounded-3xl border border-white/10 bg-grape/20" />
-          <div className="absolute inset-0 -rotate-1 overflow-hidden rounded-3xl border border-mint/30">
-            <img
-              src="/assets/hero-jam.jpg"
-              alt="Equipo de desarrolladores colaborando durante una game jam"
-              className="h-full w-full object-cover opacity-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/40 to-transparent" />
+        {/* Visual: Key Visual + countdown */}
+        <div className="relative flex flex-col items-center">
+          <div className="relative w-full max-w-[500px]">
+            {/* Background card accent */}
+            <div className="absolute inset-0 rotate-2 rounded-3xl border border-white/10 bg-grape/30" />
+            <div className="relative -rotate-1 overflow-hidden rounded-3xl border-2 border-mint/40 bg-gradient-to-b from-void/90 via-grape/25 to-void p-3 sm:p-5 shadow-[0_0_50px_-10px_rgba(34,225,157,0.3)]">
+              <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+                <div className="h-64 w-64 rounded-full bg-mint/15 blur-3xl" />
+              </div>
+
+              <img
+                src="/assets/cgj2026-key-visual.png"
+                alt="Caribe Game Jam 2026 - Ilustración oficial del evento"
+                className="h-auto w-full object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] transition-transform duration-500 hover:scale-[1.03]"
+              />
+            </div>
           </div>
 
-          <FloatingSticker
-            src="/assets/sticker-teamup.jpg"
-            alt="Devs programando en equipo"
-            className="left-[-6%] top-[6%] h-28 w-40 sm:h-32 sm:w-48"
-            rotate="-8deg"
-            label="TEAM UP"
-          />
-          <FloatingSticker
-            src="/assets/sticker-codeon.jpg"
-            alt="Desarrollador enfocado en su código"
-            className="right-[-4%] top-[18%] h-24 w-32 sm:h-28 sm:w-40"
-            rotate="7deg"
-            slow
-            label="CODE ON"
-          />
-
-          <div className="absolute bottom-[-4%] left-1/2 w-[92%] -translate-x-1/2">
+          <div className="mt-8 w-full max-w-[480px]">
             <CountdownCard />
           </div>
         </div>
