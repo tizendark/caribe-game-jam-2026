@@ -1168,11 +1168,17 @@ function Footer() {
     <footer className="bg-[#09020D]">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-14 md:flex-row">
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <img
-            src="/assets/cracktivelab-blanco-verde.png"
-            alt="CracktiveLab"
-            className="h-8 w-auto"
-          />
+          <a
+            href="#top"
+            aria-label="Volver al inicio"
+            className="inline-block transition-opacity hover:opacity-80"
+          >
+            <img
+              src="/assets/cracktivelab-blanco-verde.png"
+              alt="CracktiveLab"
+              className="h-8 w-auto"
+            />
+          </a>
           <p className="font-pixel text-[9px] leading-relaxed text-lavender">
             CARIBE GAME JAM 2026
           </p>
