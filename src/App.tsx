@@ -138,8 +138,8 @@ const NAV_LINKS = [
   { label: "Inicio", href: "#top" },
   { label: "¿Qué es?", href: "#sobre" },
   { label: "Beneficios", href: "#beneficios" },
-  { label: "Agenda", href: "#agenda" },
   { label: "GameJamPlus", href: "#gamejamplus" },
+  { label: "Agenda", href: "#agenda" },
   { label: "Preguntas", href: "#preguntas" },
 ]
 
@@ -147,7 +147,12 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-void/85 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-        <a href="#top" className="flex items-center">
+        <a
+          href="https://cracktivelab.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center"
+        >
           <img
             src="/assets/cracktivelab-logo-light.png"
             alt="CracktiveLab"
@@ -1115,7 +1120,7 @@ function FinalCta() {
                 rel="noopener noreferrer"
                 className="px-9 py-4 text-lg"
               >
-                Inscríbete en HolaFOMO
+                INSCRÍBETE AQUÍ
               </PrimaryButton>
             </div>
             <p className="mt-6 text-sm text-lavender">
