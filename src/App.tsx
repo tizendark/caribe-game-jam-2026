@@ -695,40 +695,52 @@ function Agenda() {
 
 const MENTORS = [
   {
-    name: "Laura Restrepo",
-    role: "Game Designer",
-    studio: "Efecto Studios",
-    img: "/assets/mentors/laura-restrepo.jpg",
+    name: "Juan Pablo Gomez",
+    role: "Programación",
+    studio: "Rival Arts",
+    img: "/assets/mentors/juan-pablo-gomez.svg",
   },
   {
-    name: "Andrés Molina",
-    role: "Gameplay Programmer",
-    studio: "Brainz",
-    img: "/assets/mentors/andres-molina.jpg",
+    name: "Hender Ortiz",
+    role: "Programación",
+    studio: "Aventuras Bonitas",
+    img: "/assets/mentors/hender-ortiz.svg",
   },
   {
-    name: "Valentina Ríos",
-    role: "Art Director 2D/3D",
-    studio: "Teravision",
-    img: "/assets/mentors/valentina-rios.jpg",
+    name: "Juan Miranda",
+    role: "Programación",
+    studio: "Maleiwa Studio",
+    img: "/assets/mentors/juan-miranda.svg",
   },
   {
-    name: "Camilo Duarte",
-    role: "Sound Designer",
-    studio: "Freelance",
-    img: "/assets/mentors/camilo-duarte.jpg",
+    name: "Erick Velilla",
+    role: "Programación",
+    studio: "Cracktive Lab",
+    img: "/assets/mentors/erick-velilla.svg",
   },
   {
-    name: "Daniela Pérez",
-    role: "Narrative Designer",
-    studio: "Indie",
-    img: "/assets/mentors/daniela-perez.jpg",
+    name: "José Angulo",
+    role: "Audio",
+    studio: "Joseisaudio",
+    img: "/assets/mentors/jose-angulo.svg",
   },
   {
-    name: "Sergio Vargas",
-    role: "Producer",
-    studio: "CracktiveLab",
-    img: "/assets/mentors/sergio-vargas.jpg",
+    name: "David Barreto",
+    role: "Arte",
+    studio: "Rival Arts",
+    img: "/assets/mentors/david-barreto.svg",
+  },
+  {
+    name: "Paulo Peña",
+    role: "Arte",
+    studio: "Maleiwa Studio",
+    img: "/assets/mentors/paulo-pena.svg",
+  },
+  {
+    name: "Jorge Martinez",
+    role: "Diseño",
+    studio: "Maleiwa Studio",
+    img: "/assets/mentors/jorge-martinez.svg",
   },
 ]
 
@@ -766,10 +778,10 @@ function CrackVibes() {
           <h3 className="mb-8 font-display text-2xl font-bold text-void">
             Mentores Confirmados
           </h3>
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {MENTORS.map((m) => (
               <article key={m.name} className="group text-center">
-                <div className="mx-auto aspect-square w-full overflow-hidden rounded-2xl border border-void/10 bg-[#F8F9FA]">
+                <div className="mx-auto aspect-square w-full overflow-hidden rounded-2xl border border-void/10 bg-[#0D0314] shadow-sm transition-all duration-300 group-hover:border-mint/50 group-hover:shadow-[0_0_20px_-5px_rgba(34,225,157,0.3)]">
                   <img
                     src={m.img}
                     alt={m.name}

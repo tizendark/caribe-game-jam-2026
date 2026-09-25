@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#590C8B" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#1A0626" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0D0314" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="mintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22E19D"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+    <pattern id="pixelGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none" stroke="#D1B3E0" stroke-width="0.75" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bgGlow)"/>
+  <rect width="400" height="400" fill="url(#pixelGrid)"/>
+
+  <!-- Outer Neon Frame -->
+  <rect x="18" y="18" width="364" height="364" rx="28" fill="none" stroke="#22E19D" stroke-width="2" stroke-opacity="0.4"/>
+  <rect x="26" y="26" width="348" height="348" rx="20" fill="none" stroke="#590C8B" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Corner Pixel Accents -->
+  <rect x="22" y="22" width="10" height="10" fill="#22E19D" opacity="0.8"/>
+  <rect x="368" y="22" width="10" height="10" fill="#22E19D" opacity="0.8"/>
+  <rect x="22" y="368" width="10" height="10" fill="#22E19D" opacity="0.8"/>
+  <rect x="368" y="368" width="10" height="10" fill="#22E19D" opacity="0.8"/>
+
+  <!-- Avatar Circle / Shield -->
+  <circle cx="200" cy="170" r="82" fill="#140620" stroke="url(#mintGrad)" stroke-width="3.5" filter="drop-shadow(0 0 16px rgba(34,225,157,0.35))"/>
+  
+  <!-- Cyber Silhouette / Icon -->
+  <g fill="none" stroke="#22E19D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Code Brackets < / > -->
+    <path d="M175 148 L155 170 L175 192"/>
+    <path d="M225 148 L245 170 L225 192"/>
+    <path d="M208 142 L192 198" stroke="#D1B3E0" stroke-width="3"/>
+  </g>
+
+  <!-- Initials Badge -->
+  <rect x="150" y="222" width="100" height="28" rx="6" fill="#0D0314" stroke="#22E19D" stroke-width="1.5"/>
+  <text x="200" y="241" font-family="'Courier New', monospace, sans-serif" font-weight="900" font-size="14" fill="#22E19D" text-anchor="middle" letter-spacing="3">JPG</text>
+
+  <!-- Discipline Pill -->
+  <g transform="translate(130, 276)">
+    <rect width="140" height="26" rx="13" fill="#22E19D" fill-opacity="0.15" stroke="#22E19D" stroke-width="1"/>
+    <text x="70" y="17" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#22E19D" text-anchor="middle" letter-spacing="1.5">PROGRAMACIÓN</text>
+  </g>
+
+  <!-- Studio Tag -->
+  <text x="200" y="332" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#D1B3E0" text-anchor="middle" letter-spacing="0.5">Rival Arts</text>
+</svg>
