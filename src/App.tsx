@@ -140,6 +140,7 @@ const NAV_LINKS = [
   { label: "Beneficios", href: "#beneficios" },
   { label: "GameJamPlus", href: "#gamejamplus" },
   { label: "Agenda", href: "#agenda" },
+  { label: "Mentores", href: "#mentores" },
   { label: "Preguntas", href: "#preguntas" },
 ]
 
@@ -774,7 +775,7 @@ function CrackVibes() {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div id="mentores" className="mt-16 scroll-mt-24">
           <h3 className="mb-8 font-display text-2xl font-bold text-void">
             Mentores Confirmados
           </h3>
