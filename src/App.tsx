@@ -149,7 +149,7 @@ function Nav() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-void/85 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <a
-          href="https://cracktivelab.com"
+          href="http://cracktivelab.com"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center"
@@ -808,7 +808,7 @@ function CrackVibes() {
 /* Section — Patrocinadores y Aliados — Light                        */
 /* ---------------------------------------------------------------- */
 
-type Logo = { name: string src?: string dark?: boolean }
+type Logo = { name: string; src?: string; dark?: boolean }
 
 const SPONSORS: Logo[] = [
   { name: "IDITEK", src: "/assets/iditek-new.png", dark: true },
@@ -900,8 +900,8 @@ function Partners() {
 
         {/* Organizador principal */}
         <div className="mx-auto mb-14 flex max-w-md flex-col items-center gap-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-grape">
-            Organiza:
+          <span className="font-pixel text-[9px] tracking-widest text-grape">
+            ORGANIZA:
           </span>
           <div className="flex h-28 w-full items-center justify-center rounded-2xl border border-void bg-void px-10 shadow-sm">
             <img
@@ -954,7 +954,7 @@ function Partners() {
 /* Section — FAQ acordeón — Dark                                     */
 /* ---------------------------------------------------------------- */
 
-const FAQS: { q: string a: React.ReactNode }[] = [
+const FAQS: { q: string; a: React.ReactNode }[] = [
   {
     q: "¿Qué incluye el valor de la inscripción?",
     a: "Incluye alimentación completa durante los 3 días, camiseta e identificación oficial, acceso a mentorías y acompañamiento continuo, actividades de networking, participación en premios, showcase final y conexión con la comunidad y GameJamPlus.",
@@ -1092,7 +1092,7 @@ function Institutional() {
 
             <div className="flex-none">
               <PrimaryButton
-                href="https://cracktivelab.com"
+                href="http://cracktivelab.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-xl px-8 py-4"
@@ -1139,7 +1139,7 @@ function FinalCta() {
             <p className="mt-6 text-sm text-lavender">
               Organizado por CracktiveLab (
               <a
-                href="https://cracktivelab.com"
+                href="http://cracktivelab.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-mint underline-offset-2 hover:underline"
@@ -1196,7 +1196,7 @@ function Footer() {
             CARIBE GAME JAM 2026
           </p>
           <a
-            href="https://cracktivelab.com"
+            href="http://cracktivelab.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-lavender/70 transition-colors hover:text-mint"
