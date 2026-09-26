@@ -901,7 +901,7 @@ function Partners() {
         {/* Organizador principal */}
         <div className="mx-auto mb-14 flex max-w-md flex-col items-center gap-4">
           <span className="font-pixel text-[9px] tracking-widest text-grape">
-            ORGANIZA:
+            ORGANIZA
           </span>
           <div className="flex h-28 w-full items-center justify-center rounded-2xl border border-void bg-void px-10 shadow-sm">
             <img
